@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tres pontinho_0: -3740143935253747405
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

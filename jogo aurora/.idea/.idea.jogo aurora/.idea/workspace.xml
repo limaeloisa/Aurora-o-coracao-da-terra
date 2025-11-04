@@ -14,6 +14,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.tilemap@91afae292a4e/Editor/GridEditorUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ide.visualstudio@8140e851d83e/Editor/VisualStudioEditor.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
@@ -96,6 +97,9 @@
       <workItem from="1761756501606" duration="2863000" />
       <workItem from="1761912934647" duration="6000" />
       <workItem from="1761913050520" duration="1010000" />
+      <workItem from="1762257265526" duration="14000" />
+      <workItem from="1762257290264" duration="199000" />
+      <workItem from="1762257502878" duration="8145000" />
     </task>
     <servers />
   </component>

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      plataforma de fios_0: 5438949678311699275
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
