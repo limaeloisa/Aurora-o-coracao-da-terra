@@ -16,6 +16,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.tilemap@91afae292a4e/Editor/GridEditorUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ide.visualstudio@8140e851d83e/Editor/VisualStudioEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@9496653a3df6/Editor/TMP/TMP_FontAsset_CreationMenu.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -102,6 +103,8 @@
       <workItem from="1762257502878" duration="8145000" />
       <workItem from="1762285654461" duration="79000" />
       <workItem from="1762285835490" duration="719000" />
+      <workItem from="1762339892237" duration="1997000" />
+      <workItem from="1762342840531" duration="3103000" />
     </task>
     <servers />
   </component>
