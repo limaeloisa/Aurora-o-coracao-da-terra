@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      emblema agua _0: -6582398205967994844
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

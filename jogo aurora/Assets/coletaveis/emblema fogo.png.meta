@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      emblema fogo_0: -2025126225716958159
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

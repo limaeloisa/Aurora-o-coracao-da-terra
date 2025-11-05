@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      emblema ar _0: -7944392825214920725
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

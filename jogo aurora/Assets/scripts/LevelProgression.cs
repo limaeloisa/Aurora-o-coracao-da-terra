@@ -39,7 +39,7 @@ public class LevelProgression : MonoBehaviour
     {
         if (textoContador != null)
         {
-            textoContador.text = "Coletados: " + coletados + " / " + totalNecessario;
+            textoContador.text = "" + coletados + " / " + totalNecessario;
         }
     }
 
