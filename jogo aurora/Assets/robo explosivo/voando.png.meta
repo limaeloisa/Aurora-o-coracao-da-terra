@@ -192,6 +192,32 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -934,7 +960,40 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      voando_0: -5623509322995248708
+      voando_1: 3112137105626964864
+      voando_10: -6654779169872209847
+      voando_11: -9017386210946011466
+      voando_12: 6595178444070640601
+      voando_13: 170950715813856417
+      voando_14: -8209591435162685063
+      voando_15: 2047417670806700003
+      voando_16: 2916223209220588349
+      voando_17: -644221320536829885
+      voando_18: -6144476544866239918
+      voando_19: -8119586969638984740
+      voando_2: 1928053463620043214
+      voando_20: -2911392925418500879
+      voando_21: 6842754477139464629
+      voando_22: 4485012115925311594
+      voando_23: 3403554326410652991
+      voando_24: 6411277438784288839
+      voando_25: -5002156382889157039
+      voando_26: -3843666513312136508
+      voando_27: 4899542634713048038
+      voando_28: 2466482898720107499
+      voando_29: 5960273608280683155
+      voando_3: 350068210539330536
+      voando_30: 6486292097528971540
+      voando_31: 6212534180490441550
+      voando_32: 1826440454446290043
+      voando_4: 154221588942383515
+      voando_5: 3009216809163331670
+      voando_6: 6006555393108339494
+      voando_7: 2955679737581288544
+      voando_8: 2504379881791839123
+      voando_9: -3712441859577153456
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
