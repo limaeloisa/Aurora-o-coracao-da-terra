@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class PlayerDamage : MonoBehaviour
 {
@@ -23,32 +24,46 @@ public class PlayerDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // 🔹 Espinhos continuam funcionando com respawn
         if (collision.CompareTag("Spikes"))
         {
             TakeDamage(1);
         }
     }
 
+    // 🔹 Dano comum (espinhos, armadilhas, etc.) → reaparece no respawn
     public void TakeDamage(int amount)
     {
         if (isDead) return;
 
-        lifeSystem.vida -= amount; // tira 1 coração
-        StartCoroutine(DamageFlash()); // pisca vermelho
+        lifeSystem.vida -= amount;
+        StartCoroutine(DamageFlash());
 
         if (lifeSystem.vida > 0)
         {
-            // reaparece no ponto salvo
             StartCoroutine(Respawn());
         }
         else
         {
-            // se acabou as vidas, "morre de vez"
             Die();
         }
     }
 
-    System.Collections.IEnumerator DamageFlash()
+    // 🔹 Dano da explosão → NÃO faz respawn, só perde vida
+    public void TakeExplosionDamage(int amount)
+    {
+        if (isDead) return;
+
+        lifeSystem.vida -= amount;
+        StartCoroutine(DamageFlash());
+
+        if (lifeSystem.vida <= 0)
+        {
+            Die();
+        }
+    }
+
+    IEnumerator DamageFlash()
     {
         if (sr != null)
         {
@@ -58,21 +73,17 @@ public class PlayerDamage : MonoBehaviour
         }
     }
 
-    System.Collections.IEnumerator Respawn()
+    IEnumerator Respawn()
     {
         isDead = true;
 
-        // desativa temporariamente o player
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         GetComponent<Collider2D>().enabled = false;
 
-        // espera meio segundo pra dar tempo de ver o flash
         yield return new WaitForSeconds(0.5f);
 
-        // move o player para o ponto de respawn
         transform.position = respawnPoint.position;
 
-        // reativa o collider
         GetComponent<Collider2D>().enabled = true;
         isDead = false;
     }
