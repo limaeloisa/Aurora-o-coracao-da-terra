@@ -47,7 +47,7 @@ public class PlayerAttack : MonoBehaviour
         Rigidbody2D rb = projetil.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
-            rb.velocity = new Vector2(direcao * velocidadeDoTiro, 0f);
+            rb.linearVelocity = new Vector2(direcao * velocidadeDoTiro, 0f);
         }
 
         // 5️⃣ Vira o sprite do projetil pro lado certo

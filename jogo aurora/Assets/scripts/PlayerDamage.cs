@@ -77,7 +77,7 @@ public class PlayerDamage : MonoBehaviour
     {
         isDead = true;
 
-        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         GetComponent<Collider2D>().enabled = false;
 
         yield return new WaitForSeconds(0.5f);

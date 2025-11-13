@@ -41,7 +41,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.42f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity 6000.0.42f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath &quot;C:\Users\20221170150045\Documents\GitHub\Aurora-o-coracao-da-terra\jogo aurora&quot; -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\20221170150045\Documents\GitHub\Aurora-o-coracao-da-terra\jogo aurora" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -49,7 +49,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.42f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity 6000.0.42f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath &quot;C:\Users\20221170150045\Documents\GitHub\Aurora-o-coracao-da-terra\jogo aurora&quot; -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\20221170150045\Documents\GitHub\Aurora-o-coracao-da-terra\jogo aurora" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -109,6 +109,8 @@
       <workItem from="1762858674715" duration="8229000" />
       <workItem from="1762890573083" duration="1815000" />
       <workItem from="1762973609649" duration="4906000" />
+      <workItem from="1762986430640" duration="49000" />
+      <workItem from="1762986632950" duration="4698000" />
     </task>
     <servers />
   </component>

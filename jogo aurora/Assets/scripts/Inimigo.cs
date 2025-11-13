@@ -12,18 +12,17 @@ public class Inimigo : MonoBehaviour
     [Header("Empurrão ao levar dano")]
     public float forcaEmpurrao = 2f;
 
-    [Header("Movimentação")]
+    [Header("Movimentação e perseguição")]
     public float velocidade = 2f;
-    public Transform pontoEsquerdo;
-    public Transform pontoDireito;
-    private bool indoDireita = true;
+    public float distanciaParaPerseguir = 10f;
+    public float distanciaParaAtacar = 5f;
+    private bool olhandoDireita = true;
 
     [Header("Ataque à Distância")]
     public GameObject projetilPrefab;
     public Transform pontoDeDisparo;
     public float velocidadeTiro = 7f;
     public float tempoEntreTiros = 2f;
-    public float distanciaParaAtirar = 8f;
     private float ultimoTiro;
 
     private SpriteRenderer sprite;
@@ -31,6 +30,9 @@ public class Inimigo : MonoBehaviour
     private Rigidbody2D rb;
     private Transform player;
     private Animator anim;
+
+    private enum Estado { Idle, Andando, Atacando }
+    private Estado estadoAtual = Estado.Idle;
 
     void Start()
     {
@@ -45,65 +47,76 @@ public class Inimigo : MonoBehaviour
 
     void Update()
     {
-        Patrulhar();
-        VerificarAtirar();
-    }
-
-    // 🔹 Movimento de patrulha entre dois pontos
-    void Patrulhar()
-    {
-        if (pontoEsquerdo == null || pontoDireito == null || rb == null) return;
-
-        if (anim != null)
-            anim.SetBool("walk", true);
-
-        if (indoDireita)
-        {
-            rb.velocity = new Vector2(velocidade, rb.velocity.y);
-            transform.eulerAngles = new Vector3(0f, 0f, 0f);
-
-            if (transform.position.x >= pontoDireito.position.x)
-                indoDireita = false;
-        }
-        else
-        {
-            rb.velocity = new Vector2(-velocidade, rb.velocity.y);
-            transform.eulerAngles = new Vector3(0f, 180f, 0f);
-
-            if (transform.position.x <= pontoEsquerdo.position.x)
-                indoDireita = true;
-        }
-    }
-
-    // 🔹 Verifica se o player está perto para atirar
-    void VerificarAtirar()
-    {
-        if (player == null || projetilPrefab == null || pontoDeDisparo == null) return;
+        if (player == null) return;
 
         float distancia = Vector2.Distance(transform.position, player.position);
 
-        if (distancia <= distanciaParaAtirar && Time.time > ultimoTiro + tempoEntreTiros)
+        if (distancia <= distanciaParaPerseguir && distancia > distanciaParaAtacar)
         {
-            ultimoTiro = Time.time;
+            MudarEstado(Estado.Andando);
+            Perseguir();
+        }
+        else if (distancia <= distanciaParaAtacar)
+        {
+            MudarEstado(Estado.Atacando);
+            rb.velocity = Vector2.zero;
             Atirar();
+        }
+        else
+        {
+            MudarEstado(Estado.Idle);
+            rb.velocity = Vector2.zero;
         }
     }
 
-    // 🔹 Cria o projetil e dispara
+    void MudarEstado(Estado novoEstado)
+    {
+        if (estadoAtual == novoEstado) return;
+        estadoAtual = novoEstado;
+
+        // Atualiza parâmetros de animação
+        anim.SetBool("idle", estadoAtual == Estado.Idle);
+        anim.SetBool("walk", estadoAtual == Estado.Andando);
+        anim.SetBool("attack", estadoAtual == Estado.Atacando);
+    }
+
+    void Perseguir()
+    {
+        if (player == null) return;
+
+        float direcao = Mathf.Sign(player.position.x - transform.position.x);
+
+        rb.velocity = new Vector2(direcao * velocidade, rb.velocity.y);
+
+        if ((direcao > 0 && !olhandoDireita) || (direcao < 0 && olhandoDireita))
+        {
+            Virar();
+        }
+    }
+
+    void Virar()
+    {
+        olhandoDireita = !olhandoDireita;
+        Vector3 escala = transform.localScale;
+        escala.x *= -1;
+        transform.localScale = escala;
+    }
+
     void Atirar()
     {
-        if (anim != null)
-            anim.SetTrigger("attack");
+        if (Time.time < ultimoTiro + tempoEntreTiros) return;
+        ultimoTiro = Time.time;
+
+        anim.SetTrigger("attack");
 
         GameObject projetil = Instantiate(projetilPrefab, pontoDeDisparo.position, Quaternion.identity);
 
-        float direcao = (transform.eulerAngles.y == 180f) ? -1f : 1f;
+        float direcao = olhandoDireita ? 1f : -1f;
 
         Rigidbody2D rbProj = projetil.GetComponent<Rigidbody2D>();
         if (rbProj != null)
             rbProj.velocity = new Vector2(direcao * velocidadeTiro, 0f);
 
-        // vira o tiro conforme a direção
         Vector3 escala = projetil.transform.localScale;
         escala.x = Mathf.Abs(escala.x) * direcao;
         projetil.transform.localScale = escala;
@@ -111,19 +124,14 @@ public class Inimigo : MonoBehaviour
         Destroy(projetil, 3f);
     }
 
-    // 🔹 Leva dano e reage
     public void TomarDano(int dano)
     {
         vida -= dano;
-        Debug.Log("Inimigo tomou dano. Vida restante: " + vida);
-
         StartCoroutine(PiscarVermelho());
         AplicarEmpurrao();
 
         if (vida <= 0)
-        {
             Morrer();
-        }
     }
 
     private IEnumerator PiscarVermelho()
@@ -138,25 +146,22 @@ public class Inimigo : MonoBehaviour
 
     private void AplicarEmpurrao()
     {
-        PlayerAttack player = FindObjectOfType<PlayerAttack>();
-        if (rb != null && player != null)
-        {
-            Vector2 direcao = (transform.position - player.transform.position).normalized;
-            rb.AddForce(direcao * forcaEmpurrao, ForceMode2D.Impulse);
-        }
+        if (rb == null || player == null) return;
+        Vector2 direcao = (transform.position - player.position).normalized;
+        rb.AddForce(direcao * forcaEmpurrao, ForceMode2D.Impulse);
     }
 
     void Morrer()
     {
-        if (anim != null)
+        // Se existir uma animação de morte, toca ela — senão, só destrói
+        if (anim.HasState(0, Animator.StringToHash("die")))
+        {
             anim.SetTrigger("die");
-
-        Destroy(gameObject, 0.5f);
-    }
-
-    // 🚫 Removido o dano por colisão direta
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // Nada aqui — agora o player só toma dano de tiros
+            Destroy(gameObject, 0.5f);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

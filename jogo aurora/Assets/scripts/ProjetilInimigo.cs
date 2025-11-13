@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ProjetilInimigo : MonoBehaviour
 {
-    public int dano = 10;
+    public int dano = 1;
     public float tempoDeVida = 3f;
 
     void Start()
@@ -14,14 +14,15 @@ public class ProjetilInimigo : MonoBehaviour
     {
         if (outro.CompareTag("Player"))
         {
-            PlayerDamage pd = outro.GetComponent<PlayerDamage>();
-            if (pd != null)
+            PlayerDamage player = outro.GetComponent<PlayerDamage>();
+            if (player != null)
             {
-                pd.TakeDamage(dano);
+                player.TakeExplosionDamage(dano);
             }
+
             Destroy(gameObject);
         }
-        else if (!outro.CompareTag("Inimigo")) // não destrói se colidir com o próprio inimigo
+        else if (outro.CompareTag("chão") || outro.CompareTag("Obstacle"))
         {
             Destroy(gameObject);
         }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Spikes
   - Inimigo
+  - Obstacle
   layers:
   - Default
   - TransparentFX

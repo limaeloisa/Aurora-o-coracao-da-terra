@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
         }
     }
      
-    void OnCollisionExite2D(Collision2D collision)
+    void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.layer == 8)
         {
