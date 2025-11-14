@@ -171,6 +171,32 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -759,7 +785,33 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      b4dacb0e7680ef625b44cbf051bcbeb0 (2) - Editado_0: -1932254268105360258
+      b4dacb0e7680ef625b44cbf051bcbeb0 (2) - Editado_1: -8715510508146636023
+      b4dacb0e7680ef625b44cbf051bcbeb0 (2) - Editado_10: -1301692277190651446
+      b4dacb0e7680ef625b44cbf051bcbeb0 (2) - Editado_11: -4168065749107825302
+      b4dacb0e7680ef625b44cbf051bcbeb0 (2) - Editado_12: 5081543446174466024
+      b4dacb0e7680ef625b44cbf051bcbeb0 (2) - Editado_13: -2279581490879797710
+      b4dacb0e7680ef625b44cbf051bcbeb0 (2) - Editado_14: 7146758788077735210
+      b4dacb0e7680ef625b44cbf051bcbeb0 (2) - Editado_15: 1218956359001174317
+      b4dacb0e7680ef625b44cbf051bcbeb0 (2) - Editado_16: 5385501882014213927
+      b4dacb0e7680ef625b44cbf051bcbeb0 (2) - Editado_17: -5656656130558179834
+      b4dacb0e7680ef625b44cbf051bcbeb0 (2) - Editado_18: -7306200057608760408
+      b4dacb0e7680ef625b44cbf051bcbeb0 (2) - Editado_19: 903453532897956353
+      b4dacb0e7680ef625b44cbf051bcbeb0 (2) - Editado_2: -3346645084164206485
+      b4dacb0e7680ef625b44cbf051bcbeb0 (2) - Editado_20: -3576736916508944144
+      b4dacb0e7680ef625b44cbf051bcbeb0 (2) - Editado_21: -3426548657954726473
+      b4dacb0e7680ef625b44cbf051bcbeb0 (2) - Editado_22: 6184253343270539034
+      b4dacb0e7680ef625b44cbf051bcbeb0 (2) - Editado_23: 4460066617507966279
+      b4dacb0e7680ef625b44cbf051bcbeb0 (2) - Editado_24: 5774458599603443631
+      b4dacb0e7680ef625b44cbf051bcbeb0 (2) - Editado_25: 9106493035956537211
+      b4dacb0e7680ef625b44cbf051bcbeb0 (2) - Editado_3: -3932592128847542542
+      b4dacb0e7680ef625b44cbf051bcbeb0 (2) - Editado_4: 7102119069596036761
+      b4dacb0e7680ef625b44cbf051bcbeb0 (2) - Editado_5: -811838112282176981
+      b4dacb0e7680ef625b44cbf051bcbeb0 (2) - Editado_6: -1449438611805129863
+      b4dacb0e7680ef625b44cbf051bcbeb0 (2) - Editado_7: -8029492505636393348
+      b4dacb0e7680ef625b44cbf051bcbeb0 (2) - Editado_8: 8375634426278900524
+      b4dacb0e7680ef625b44cbf051bcbeb0 (2) - Editado_9: -4047134430098996862
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
