@@ -59,13 +59,13 @@ public class Inimigo : MonoBehaviour
         else if (distancia <= distanciaParaAtacar)
         {
             MudarEstado(Estado.Atacando);
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
             Atirar();
         }
         else
         {
             MudarEstado(Estado.Idle);
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
         }
     }
 
@@ -86,7 +86,7 @@ public class Inimigo : MonoBehaviour
 
         float direcao = Mathf.Sign(player.position.x - transform.position.x);
 
-        rb.velocity = new Vector2(direcao * velocidade, rb.velocity.y);
+        rb.linearVelocity = new Vector2(direcao * velocidade, rb.linearVelocity.y);
 
         if ((direcao > 0 && !olhandoDireita) || (direcao < 0 && olhandoDireita))
         {
@@ -115,7 +115,7 @@ public class Inimigo : MonoBehaviour
 
         Rigidbody2D rbProj = projetil.GetComponent<Rigidbody2D>();
         if (rbProj != null)
-            rbProj.velocity = new Vector2(direcao * velocidadeTiro, 0f);
+            rbProj.linearVelocity = new Vector2(direcao * velocidadeTiro, 0f);
 
         Vector3 escala = projetil.transform.localScale;
         escala.x = Mathf.Abs(escala.x) * direcao;

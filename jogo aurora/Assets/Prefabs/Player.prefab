@@ -14,6 +14,9 @@ GameObject:
   - component: {fileID: 7462277075201220397}
   - component: {fileID: 8232240507734632729}
   - component: {fileID: 4333426743609052599}
+  - component: {fileID: 347694389899968498}
+  - component: {fileID: 1672805561129788000}
+  - component: {fileID: 2246261129459819296}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -30,10 +33,12 @@ Transform:
   m_GameObject: {fileID: 2402871446973782580}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.289, y: -3.298, z: 0}
+  m_LocalPosition: {x: -31.02, y: 36.79, z: 0}
   m_LocalScale: {x: 0.15090673, y: 0.15090673, z: 0.15090673}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5292914627858951842}
+  - {fileID: 9108500797402771751}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7027469300871937190
@@ -79,7 +84,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 6
   m_Sprite: {fileID: 8793639957104055765, guid: 799ccd4f91b3681418070932b96e3ff1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -177,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 5
-  JumpForce: 5
+  JumpForce: 7
   isJumping: 0
   doubleJump: 0
 --- !u!95 &4333426743609052599
@@ -202,3 +207,118 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &347694389899968498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2402871446973782580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41baccb2c67a87c409051262a3d1dd04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vida: 5
+  vidaMaxima: 5
+  coracao:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  cheio: {fileID: 78795560661364735, guid: 8514a179f144a2a45aebb376e25acfbd, type: 3}
+  vazio: {fileID: 670247439710868278, guid: eca1142a1ed914c4c8557cc164b9aa03, type: 3}
+--- !u!114 &1672805561129788000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2402871446973782580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6de7ea66825c28a4d894d3a61044a11e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeSystem: {fileID: 0}
+  respawnPoint: {fileID: 0}
+--- !u!114 &2246261129459819296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2402871446973782580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 686cc0433474bb540a0cf6b2db9dd24e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projetilPrefab: {fileID: 5862542368340784504, guid: 0b86c84056a72c04190b66cb13a22e0c, type: 3}
+  pontoDeDisparo: {fileID: 9108500797402771751}
+  velocidadeDoTiro: 10
+  tempoEntreTiros: 0.5
+  tempoDestruicaoProjetil: 3
+--- !u!1 &3031520613061976175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9108500797402771751}
+  m_Layer: 0
+  m_Name: PontoDeDisparo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9108500797402771751
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3031520613061976175}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.6, y: -1.46, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2899584321999078942}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3949690458584713555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5292914627858951842}
+  m_Layer: 0
+  m_Name: RespawnPoint.
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5292914627858951842
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3949690458584713555}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2899584321999078942}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
