@@ -29,7 +29,7 @@ public class Tile : MonoBehaviour
 
     private void OnMouseDown()
     {
-        
+        gameManager.PlayLightAndTone(tileId);
     }
  
 }
