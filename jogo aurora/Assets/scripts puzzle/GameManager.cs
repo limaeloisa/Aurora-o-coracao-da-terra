@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     [Header("Game Objects")]
     [SerializeField] private Tile tilePrefab;
     [SerializeField] private Transform gameArea;
+    [SerializeField] private GameObject playButton;
+    
 
     [Header("Audio Setup")] [SerializeField]
     private float duration = 0.2f;
@@ -26,6 +29,8 @@ public class GameManager : MonoBehaviour
     }
     
     private GameMode gameMode = GameMode.None;
+    private List<int> leveltales;
+    private int currentIndex = 0;
 
      void Start()
      {
@@ -82,8 +87,40 @@ public class GameManager : MonoBehaviour
 
      public void PlayLightAndTone(int index)
      {
-         StartCoroutine(FlashTiles(index));
-         PlayTone(index);
+         if (gameMode == GameMode.Playing)
+         {
+
+
+             StartCoroutine(FlashTiles(index));
+             if (index == leveltales[currentIndex])
+             {
+                 PlayTone(index);
+                 currentIndex++;
+                 if (currentIndex == leveltales.Count)
+                 {
+                     leveltales.Add(Random.Range(0, numTiles));
+                     StartCoroutine(PlaySequence());
+                 }
+
+             }
+             else
+             {
+                 Debug.LogFormat($"you got to level{leveltales.Count -2}");
+                 gameMode = GameMode.Menu;
+                 playButton.SetActive(true);
+                 PlayErrorTone();
+
+             }
+
+         }
+     }
+
+     private void PlayErrorTone()
+     {
+         audioSource.pitch = 0.5f;
+         double currentTime = AudioSettings.dspTime;
+         audioSource.PlayScheduled(currentTime);
+         audioSource.SetScheduledEndTime(currentTime + 3 * duration);
      }
 
      private void PlayTone(int index)
@@ -97,6 +134,37 @@ public class GameManager : MonoBehaviour
          audioSource.PlayScheduled(currenTime);
          audioSource.SetScheduledEndTime(currenTime + duration);
         
+     }
+
+     public void Play()
+     {
+         playButton.SetActive(false);
+         
+         StopCoroutine(MenuTileAnimation());
+
+         leveltales = new()
+         {
+             Random.Range(0, numTiles),
+             Random.Range(0, numTiles),
+             Random.Range(0, numTiles),
+         };
+
+         StartCoroutine(PlaySequence());
+     }
+
+     private IEnumerator PlaySequence()
+     {
+         gameMode = GameMode.Listeng;
+         yield return new WaitForSeconds(2f);
+         foreach (int index in leveltales)
+         {
+             PlayTone(index);
+             yield return FlashTiles(index);
+             yield return new WaitForSeconds(duration);
+         }
+
+         currentIndex = 0;
+         gameMode = GameMode.Playing;
      }
 
 }
