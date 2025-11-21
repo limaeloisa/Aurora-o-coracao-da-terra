@@ -5,33 +5,52 @@ using System.Collections;
 public class PlayerDamage : MonoBehaviour
 {
     [Header("Sistema de Vida")]
-    public LifeSystem lifeSystem;   // referência ao script de corações
+    public LifeSystem lifeSystem;
 
     [Header("Respawn")]
-    public Transform respawnPoint;  // ponto onde o player volta após morrer
+    public Transform respawnPoint;
 
     private bool isDead = false;
     private SpriteRenderer sr;
 
     void Start()
     {
-        // se o campo LifeSystem não for preenchido manualmente, encontra automaticamente
         if (lifeSystem == null)
             lifeSystem = FindObjectOfType<LifeSystem>();
 
         sr = GetComponent<SpriteRenderer>();
+
+        // Caso não tenha respawn inicial definido, cria um
+        if (respawnPoint == null)
+        {
+            GameObject startPoint = new GameObject("RespawnInicial");
+            startPoint.transform.position = transform.position;
+            respawnPoint = startPoint.transform;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // 🔹 Espinhos continuam funcionando com respawn
+        // Dano de espinho
         if (collision.CompareTag("Spikes"))
         {
             TakeDamage(1);
         }
+
+        // Detecta novo respawnpoint
+        if (collision.CompareTag("Respawn"))
+        {
+            SetRespawnPoint(collision.transform);
+        }
     }
 
-    // 🔹 Dano comum (espinhos, armadilhas, etc.) → reaparece no respawn
+    // Atualiza o respawn para o checkpoint tocado
+    public void SetRespawnPoint(Transform newPoint)
+    {
+        respawnPoint = newPoint;
+        Debug.Log("Novo respawn definido: " + newPoint.position);
+    }
+
     public void TakeDamage(int amount)
     {
         if (isDead) return;
@@ -49,7 +68,6 @@ public class PlayerDamage : MonoBehaviour
         }
     }
 
-    // 🔹 Dano da explosão → NÃO faz respawn, só perde vida
     public void TakeExplosionDamage(int amount)
     {
         if (isDead) return;
@@ -82,6 +100,7 @@ public class PlayerDamage : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
+        // Faz o respawn corretamente
         transform.position = respawnPoint.position;
 
         GetComponent<Collider2D>().enabled = true;

@@ -256,7 +256,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00012207031, y: -10.188105}
+  m_AnchoredPosition: {x: 0, y: -10.18811}
   m_SizeDelta: {x: 0, y: 20.3762}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &243800854
@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70aa8dc5fb6cd2a47bba95e9c6cf7941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nomeDoLevelDoJogador: level1
+  nomeDoLevelDoJogador: cutscene
   painelMenuInicial: {fileID: 862629386}
 --- !u!1 &862629386
 GameObject:
@@ -377,7 +377,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00012207031, y: -10.187988}
+  m_AnchoredPosition: {x: 0, y: -10.187988}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &929119972

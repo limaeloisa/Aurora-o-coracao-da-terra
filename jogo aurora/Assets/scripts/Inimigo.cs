@@ -12,18 +12,9 @@ public class Inimigo : MonoBehaviour
     [Header("Empurrão ao levar dano")]
     public float forcaEmpurrao = 2f;
 
-    [Header("Movimentação e perseguição")]
+    [Header("Movimentação")]
     public float velocidade = 2f;
-    public float distanciaParaPerseguir = 10f;
-    public float distanciaParaAtacar = 5f;
     private bool olhandoDireita = true;
-
-    [Header("Ataque à Distância")]
-    public GameObject projetilPrefab;
-    public Transform pontoDeDisparo;
-    public float velocidadeTiro = 7f;
-    public float tempoEntreTiros = 2f;
-    private float ultimoTiro;
 
     private SpriteRenderer sprite;
     private Color corOriginal;
@@ -31,7 +22,7 @@ public class Inimigo : MonoBehaviour
     private Transform player;
     private Animator anim;
 
-    private enum Estado { Idle, Andando, Atacando }
+    private enum Estado { Idle, Andando }
     private Estado estadoAtual = Estado.Idle;
 
     void Start()
@@ -49,24 +40,8 @@ public class Inimigo : MonoBehaviour
     {
         if (player == null) return;
 
-        float distancia = Vector2.Distance(transform.position, player.position);
-
-        if (distancia <= distanciaParaPerseguir && distancia > distanciaParaAtacar)
-        {
-            MudarEstado(Estado.Andando);
-            Perseguir();
-        }
-        else if (distancia <= distanciaParaAtacar)
-        {
-            MudarEstado(Estado.Atacando);
-            rb.linearVelocity = Vector2.zero;
-            Atirar();
-        }
-        else
-        {
-            MudarEstado(Estado.Idle);
-            rb.linearVelocity = Vector2.zero;
-        }
+        MudarEstado(Estado.Andando);
+        Perseguir();
     }
 
     void MudarEstado(Estado novoEstado)
@@ -74,16 +49,12 @@ public class Inimigo : MonoBehaviour
         if (estadoAtual == novoEstado) return;
         estadoAtual = novoEstado;
 
-        // Atualiza parâmetros de animação
         anim.SetBool("idle", estadoAtual == Estado.Idle);
         anim.SetBool("walk", estadoAtual == Estado.Andando);
-        anim.SetBool("attack", estadoAtual == Estado.Atacando);
     }
 
     void Perseguir()
     {
-        if (player == null) return;
-
         float direcao = Mathf.Sign(player.position.x - transform.position.x);
 
         rb.linearVelocity = new Vector2(direcao * velocidade, rb.linearVelocity.y);
@@ -102,28 +73,19 @@ public class Inimigo : MonoBehaviour
         transform.localScale = escala;
     }
 
-    void Atirar()
+    // --- COLISÃO COM O PLAYER (ATAQUE CORPO-A-CORPO SIMPLES) ---
+    private void OnCollisionEnter2D(Collision2D col)
     {
-        if (Time.time < ultimoTiro + tempoEntreTiros) return;
-        ultimoTiro = Time.time;
+        if (col.collider.CompareTag("Player"))
+        {
+            // Aqui você pode colocar animação de dano do player
+            // col.collider.GetComponent<PlayerDamage>()?.TomarDano(1);
 
-        anim.SetTrigger("attack");
-
-        GameObject projetil = Instantiate(projetilPrefab, pontoDeDisparo.position, Quaternion.identity);
-
-        float direcao = olhandoDireita ? 1f : -1f;
-
-        Rigidbody2D rbProj = projetil.GetComponent<Rigidbody2D>();
-        if (rbProj != null)
-            rbProj.linearVelocity = new Vector2(direcao * velocidadeTiro, 0f);
-
-        Vector3 escala = projetil.transform.localScale;
-        escala.x = Mathf.Abs(escala.x) * direcao;
-        projetil.transform.localScale = escala;
-
-        Destroy(projetil, 3f);
+            // Não existe mais animação de ataque do inimigo
+        }
     }
 
+    // --- SISTEMA DE DANO DO INIMIGO ---
     public void TomarDano(int dano)
     {
         vida -= dano;
@@ -153,7 +115,6 @@ public class Inimigo : MonoBehaviour
 
     void Morrer()
     {
-        // Se existir uma animação de morte, toca ela — senão, só destrói
         if (anim.HasState(0, Animator.StringToHash("die")))
         {
             anim.SetTrigger("die");

@@ -535,7 +535,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ajbjhcd hjxbsfbc b ufhcnjdsv
+  m_text: "A Terra estava morrendo... at\xE9 que quatro joias ca\xEDram do c\xE9u
+    e devolveram a vida ao planeta. Aurora foi a primeira a encontr\xE1-las, testemunhado
+    o renascimento da natureza."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -876,7 +878,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: sgbhdc djkvh fvlkdilfhb s,v,dfuhrfj rvkidhorfb dkdihf
+  m_text: "Agora, aurora viaja pelo espa\xE7o em uma miss\xE3o urgente para recuperar
+    o cristal perdido e salvar novamente o futuro da Terra\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1174,7 +1177,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: tedfdbncjkdjgdb ccnubhdnvb fhvbf vdfghuregbjfuv dg hfb jv hdgfug
+  m_text: "Com o SETED(Servi\xE7o Espacial de Tecnologia Desconhecida), ela ajudou
+    a criar o Cora\xE7\xE3o da Terra: a maquina que restaurou o equil\xEDbrio do
+    mundo. Mas quando for\xE7as alien\xEDginas invadiram a base e roubaram uma das
+    joias, tudo voltou a ficar em perido denov0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
